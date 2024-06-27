@@ -17,7 +17,7 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import jakarta.validation.Valid;
 
 
-@RequestMapping("/api/v1/")
+@RequestMapping("/api/v1")
 @RestController
 public class UserLoginController {
 
@@ -31,8 +31,8 @@ public class UserLoginController {
 		this.userLoginService = userLoginService;
 	}
 
-
-	@PostMapping("login")
+	//API For Login User
+	@PostMapping("/login")
 	public ResponseEntity<String> loginUser(@Valid @org.springframework.web.bind.annotation.RequestBody UserLoginRequestDTO userLoginRequestDTO) throws AuthException{
 		System.out.println("Login DTO :"+userLoginRequestDTO.getPassword());
 		String Response = userLoginService.loginUser(userLoginRequestDTO);

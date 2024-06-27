@@ -29,6 +29,8 @@ public class UserController {
 		super();
 		this.userService = userService;
 	}
+	
+	//To Get All Registered Users
 	@GetMapping
 	public ResponseEntity<List<Users>> getAllUser(
 			@RequestParam(name = "pageNumber", defaultValue = "0") Integer pageNumber,
@@ -37,6 +39,18 @@ public class UserController {
 		return ResponseEntity.status(HttpStatus.OK).body(userList);
 	}
 	
+
+    
+    //Forgot password which takes email as path variable and response with OTP 
+    //which will be used for Reset-Password
+    @GetMapping("/forgot-password/{email}")
+    public ResponseEntity<String> forgotPassword(@PathVariable String email) throws AuthException {
+    	String response = userService.forgotPassword(email);
+        return ResponseEntity.status(HttpStatus.OK).body("Your OTP For Reset Password "+ response);
+
+    }
+    
+	//To Reset Password,Update password field
     @PatchMapping("/reset-password")
     public ResponseEntity<String> resetPassword(@RequestBody UserPasswordResetDTO userPasswordResetDTO) throws AuthException {
 
@@ -45,19 +59,13 @@ public class UserController {
 
     }
     
-    @GetMapping("/forgot-password/{email}")
-    public ResponseEntity<String> forgotPassword(@PathVariable String email) throws AuthException {
-    	String response = userService.forgotPassword(email);
-        return ResponseEntity.status(HttpStatus.OK).body("Your OTP For Reset Password "+ response);
-
-    }
+    //This API is just to validate OTP.
+    //Created only for testing Logic
     
     @PostMapping("/verify-otp")
     public ResponseEntity<String> verifyOTP(@RequestBody OneTimePasswordDTO oneTimePasswordDTO) throws AuthException {
-
     	userService.verifyOTP(oneTimePasswordDTO);
         return ResponseEntity.status(HttpStatus.OK).body("OTP Verified!!");
-
     } 
 	
 }
