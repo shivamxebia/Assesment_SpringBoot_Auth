@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.Authentication.Application.dao.UserRegisterRepository;
 import com.Authentication.Application.entity.Users;
 import com.Authentication.Application.exception.AuthException;
+import com.Authentication.Application.request.UserPasswordResetDTO;
 import com.Authentication.Application.request.UserRegistrationRequestDTO;
 import com.Authentication.Application.service.UserRegistrationService;
 @Service
@@ -55,4 +56,6 @@ System.out.println("Register : "+userRegistrationRequestDTO.getPassword());
 		userRegisterRepository.save(user);
 		return "User Created Successfully!!";
 	}
+	
+
 }

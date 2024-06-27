@@ -48,19 +48,26 @@ public class Users implements Serializable {
 	private String address;
 	
 	@Column
-	private Integer noOfAttempts;
+	private Integer noOfAttempts=0;
 	
 	@Column
-	private boolean isBlocked;
+	private boolean isBlocked=false;
 	
+	@Column
+	private LocalDateTime blockedTime ;
+
 	@Column
 	private LocalDateTime userCreatedTime = LocalDateTime.now();
 	
+	@Column
+	private LocalDateTime lastLoginAttemptTime;
+
 	@Column
 	private String forgotPasswordOtp;
 	
 	@Column
 	private LocalDateTime forgotPasswordOtpTimeAndDate;
+
 
 	public Long getId() {
 		return id;
@@ -94,11 +101,11 @@ public class Users implements Serializable {
 		this.email = email;
 	}
 	
-	public String getpassword() {
+	public String getPassword() {
 		return password;
 	}
 
-	public void setpassword(String password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
@@ -134,14 +141,28 @@ public class Users implements Serializable {
 		this.noOfAttempts = noOfAttempts;
 	}
 
-	public boolean isBlocked() {
+	public LocalDateTime getLastLoginAttemptTime() {
+		return lastLoginAttemptTime;
+	}
+
+	public void setLastLoginAttemptTime(LocalDateTime lastLoginAttemptTime) {
+		this.lastLoginAttemptTime = lastLoginAttemptTime;
+	}
+	
+	public boolean getIsBlocked() {
 		return isBlocked;
 	}
 
-	public void setBlocked(boolean isBlocked) {
+	public void setIsBlocked(boolean isBlocked) {
 		this.isBlocked = isBlocked;
 	}
+	public LocalDateTime getBlockedTime() {
+		return blockedTime;
+	}
 
+	public void setBlockedTime(LocalDateTime blockedTime) {
+		this.blockedTime = blockedTime;
+	}
 	public LocalDateTime getUserCreatedTime() {
 		return userCreatedTime;
 	}
@@ -173,6 +194,8 @@ public class Users implements Serializable {
 				+ noOfAttempts + ", isBlocked=" + isBlocked + ", userCreatedTime=" + userCreatedTime
 				+ ", forgotPasswordOtpTimeAndDate=" + forgotPasswordOtpTimeAndDate + "]";
 	}
+
+
 	
 
 	

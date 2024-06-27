@@ -1,8 +1,9 @@
 package com.Authentication.Application.request;
 
 public class UserPasswordResetDTO {
-    private String username;
-    private String phoneNumber;
+
+    private String email;
+    private String forgotPasswordOtp;
     private String newPassword;
 
 	public String getNewPassword() {
@@ -13,20 +14,20 @@ public class UserPasswordResetDTO {
 		this.newPassword = newPassword;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getForgotPasswordOtp() {
+		return forgotPasswordOtp;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setForgotPasswordOtp(String forgotPasswordOtp) {
+		this.forgotPasswordOtp = forgotPasswordOtp;
 	}
 
-	public String getPhoneNumber() {
-		return phoneNumber;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }
 
