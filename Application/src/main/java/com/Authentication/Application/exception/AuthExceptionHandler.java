@@ -20,14 +20,5 @@ public class AuthExceptionHandler {
 
 	}
 	
-//    @ExceptionHandler(value = { DuplicateEntryException.class })
-//    public ResponseEntity<Object> handleDuplicateEntryException(DuplicateEntryException ex) {
-//        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
-//    }
-//    
-    @ExceptionHandler(value = { UserNotExistException.class })
-    public ResponseEntity<Object> handleUserNotExistException(UserNotExistException ex) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
-    }
     
 }
